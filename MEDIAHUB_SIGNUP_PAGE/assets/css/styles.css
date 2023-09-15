@@ -47,18 +47,23 @@ body{
 	padding:0px;
 	word-break: break-word;
 	word-wrap: break-word;
+	background-position: center;
+	background-size: cover;
 }
 
 		.item_class_0:hover{padding-left: 10px!important; padding-right: 10px!important; left: 12px!important; margin: 1em 1em 0em!important; font-family: amatic!important; font-weight: bold!important; font-style: normal!important; font-size: 33px!important;}
 .class_1{
 
-	left: -4px;
-	background-color: rgb(245, 255, 222);
+	/* left: -4px; */
+	/* background-color: rgb(245, 255, 222); */
 	font-family: opensans;
 	letter-spacing: 1px;
 	padding: 0px;
 	margin: 0em;
-	height: 0%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	
 }
 
@@ -66,10 +71,12 @@ body{
 
 	width: 100%;
 	max-width: 500px;
-	margin: 0px auto;
+	/* margin: 0px auto; */
 	padding: 50px;
 	text-align: center;
-	top: 0.260163%;
+	/* top: 0.260163%; */
+	background-color: rgba(200,200,200,0.6);
+	border-radius: 5vmin ;
 	
 }
 
