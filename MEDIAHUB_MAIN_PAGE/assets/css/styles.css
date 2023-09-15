@@ -395,7 +395,7 @@ body{
 	min-width: 300px;
 	vertical-align: top;
 	min-height: 750px;
-	height: 734px;
+	height: 785px;
 	
 }
 
@@ -489,6 +489,11 @@ body{
 .class_39{
 
 	top: 2px;
+	place-content: stretch;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: none;
 	
 }
 
@@ -497,48 +502,33 @@ body{
 	font-size: 30px;
 	margin: 10px 5px;
 	color: rgb(63, 71, 204);
+	justify-content: stretch;
+	align-items: stretch;
 	
 }
 
 .class_41{
 
-	font-size: 30px;
-	margin-left: 5px;
-	margin-right: 5px;
-	color: rgb(26, 135, 57);
+	background-color: rgb(222, 222, 222);
 	
 }
 
 .class_42{
 
 	font-size: 30px;
-	margin: 10px 5px;
-	color: rgb(0, 160, 230);
+	color: rgb(255, 54, 165);
 	
 }
 
 .class_43{
 
-	font-size: 30px;
-	margin: 10px 5px;
-	color: rgb(236, 28, 35);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	
 }
 
 .class_44{
-
-	background-color: rgb(222, 222, 222);
-	
-}
-
-.class_45{
-
-	font-size: 30px;
-	color: rgb(255, 54, 165);
-	
-}
-
-.class_46{
 
 	font-size: 30px;
 	margin-left: 5px;
@@ -547,31 +537,42 @@ body{
 	
 }
 
+.class_45{
+
+	font-size: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: rgb(26, 135, 57);
+	
+}
+
+.class_46{
+
+	font-size: 30px;
+	margin: 10px 5px;
+	color: rgb(0, 160, 230);
+	
+}
+
 .class_47{
+
+	font-size: 30px;
+	margin: 10px 5px;
+	color: rgb(236, 28, 35);
+	
+}
+
+.class_48{
 
 	font-size: 30px;
 	color: rgb(0, 0, 0);
 	
 }
 
-.class_48{
+.class_49{
 
 	padding: 4px;
 	border-radius: 20px;
-	
-}
-
-.class_49{
-
-	cursor: pointer;
-	font-size: 16px;
-	padding: 10px;
-	border: none;
-	color: rgb(255, 255, 255);
-	background-color: rgb(143, 0, 220);
-	border-radius: 6px;
-	margin: 0.25rem 0.125rem;
-	left: 1px;
 	
 }
 
@@ -585,17 +586,31 @@ body{
 	background-color: rgb(143, 0, 220);
 	border-radius: 6px;
 	margin: 0.25rem 0.125rem;
-	float: right;
+	left: 1px;
 	
 }
 
 .class_51{
 
-	clear: both;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 10px;
+	border: none;
+	color: rgb(255, 255, 255);
+	background-color: rgb(143, 0, 220);
+	border-radius: 6px;
+	margin: 0.25rem 0.125rem;
+	float: right;
 	
 }
 
 .class_52{
+
+	clear: both;
+	
+}
+
+.class_53{
 
 	width: 219px;
 	 background-color: rgb(26, 86, 135);
@@ -605,7 +620,7 @@ body{
 	
 }
 
-.class_53{
+.class_54{
 
 	height: 50px;
 	background-color: rgb(16, 60, 158);
@@ -618,14 +633,14 @@ body{
 	
 }
 
-.class_54{
+.class_55{
 
 	padding: 5px;
 	cursor: pointer;
 	
 }
 
-.class_55{
+.class_56{
 
 	height: 50px;
 	padding: 10px;
@@ -638,14 +653,14 @@ body{
 	
 }
 
-.class_56{
+.class_57{
 
 	padding: 5px;
 	cursor: pointer;
 	
 }
 
-.class_57{
+.class_58{
 
 	height: 50px;
 	padding: 10px;
@@ -655,13 +670,6 @@ body{
 	justify-content: flex-start;
 	align-items: center;
 	border-bottom: 1px solid rgb(255, 255, 255);
-	
-}
-
-.class_58{
-
-	padding: 5px;
-	cursor: pointer;
 	
 }
 
@@ -683,11 +691,18 @@ body{
 
 	padding: 5px;
 	cursor: pointer;
-	left: 3px;
 	
 }
 
 .class_62{
+
+	padding: 5px;
+	cursor: pointer;
+	left: 3px;
+	
+}
+
+.class_63{
 
 	flex: 1 1 0%;
 	min-height: 200px;
@@ -697,7 +712,7 @@ body{
 	
 }
 
-.class_63{
+.class_64{
 
 	padding-left: 10px;
 	padding-right: 10px;
@@ -707,27 +722,27 @@ body{
 	
 }
 
-.class_64{
+.class_65{
 
 	overflow-x: auto;
 	width: 100%;
 	
 }
 
-.class_65{
+.class_66{
 
 	width: 96%;
 	
 }
 
-.class_66{
+.class_67{
 
 	left: 0px;
 	top: 2px;
 	
 }
 
-.class_67{
+.class_68{
 
 	padding: 6px;
 	background-color: rgb(196, 61, 61);
