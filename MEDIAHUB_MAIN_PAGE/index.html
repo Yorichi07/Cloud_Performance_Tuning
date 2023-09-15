@@ -3,98 +3,106 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MEDIAHUB MAIN PAGE</title>
+	<title>my drive main page</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.css?4477">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
 
-	
+	<style>
+		
+		.hide{
+			display: none;
+		}
+
+		.class_46:hover{
+			background-color: rgb(125, 125, 125);
+			color: white;
+		}
+
+	</style>
 	<div class="class_1" >
 		<div class="class_2" >
 			<img src="assets/images/placeholder-icon.jpg" class="class_3" >
 		</div>
 		<div class="class_4" >
-			<h1  class="class_5" >
+			<h1 class="class_5"  >
 				MEDIAHUB
-				<i class="bi bi-cloud-arrow-up-fill class_6">
-				</i>
+				<i class="bi bi-cloud-arrow-up-fill class_6"></i>
 			</h1>
 		</div>
 		<div class="class_7" >
-			<img src="assets/images/beautiful-happy-african-american-woman.jpg" class="class_8" >
-			<div  class="class_9" >
+			<img src="assets/images/beautiful-happy-african.jpg" class="class_8" >
+			<div class="class_9"  >
 				Hi User
 			</div>
 		</div>
 	</div>
 	<div class="class_10" >
 		<div class="class_11" >
-			<button  class="class_12" >
-				+New_Folder
+			<button class="class_12"  >
+				+ New Folder
 			</button>
 			<div class="class_13" >
-				<div  class="class_14" >
-					<b>
-						Drive Space
-					</b>
+				<div class="class_9"  >
+					Drive Space
 				</div>
-				<div class="class_15" >
-					<div class="class_16" >
-					</div>
+				<div class="class_14" >
+					<div class="class_15" ></div>
 				</div>
-				<div  class="class_17" >
-					<b  class="class_18">
-						8Gb / 10Gb
-					</b>
+				<div class="class_9"  >
+					8Gb / 10Gb
 				</div>
 			</div>
-			<div class="class_19" >
-				<i class="bi bi-cloud-arrow-up-fill class_20">
-				</i>
-				<div  class="class_21" >
+			<div id="MYDRIVE" onclick="mode.set(this.id)" class="class_16" >
+				<i class="bi bi-cloud-arrow-up-fill class_17"></i>
+				<div class="class_9"  >
 					My Drive
 				</div>
 			</div>
-			<div class="class_22" >
-				<i  class="bi bi-star-fill class_20">
+			<div id="FAVORITES" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-star-fill class_17">
 				</i>
-				<div  class="class_24" >
+				<div class="class_9"  >
 					Favorites
 				</div>
 			</div>
-			<div class="class_22" >
-				<i  class="bi bi-clock-fill class_20">
+			<div id="RECENT" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-alarm-fill class_17">
 				</i>
-				<div  class="class_21" >
+				<div class="class_9"  >
 					Recent
 				</div>
 			</div>
-			<div class="class_22" >
-				<i  class="bi bi-trash3-fill class_20">
+			<div id="TRASH" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-trash3-fill class_17">
 				</i>
-				<div  class="class_21" >
+				<div class="class_9"  >
 					Trash
 				</div>
 			</div>
 		</div>
-		<div class="class_29" >
-			<div class="class_30" >
-				<div  class="class_31" >
+		<div class="class_22" >
+			<div class="class_23" >
+				<div class="class_24"  >
 					My Drive
+					<br>
 				</div>
-				<div  class="class_31" >
+				<div class="class_25"  >
 					My First Folder
+					<br>
 				</div>
-				<div  class="class_32" >
+				<div class="class_26"  >
 					My Second Folder
+					<br>
 				</div>
 			</div>
-			<h1  class="class_33" >
+			<h1 class="class_27"  >
 				My Files
+				<br>
 			</h1>
-			<div class="class_34" >
-				<table  class="item_class_0 class_35">
+			<div class="class_28" >
+				<table oncontextmenu="submenu.show(event)" class="item_class_0 class_29">
 					
 					<thead >
 						
@@ -106,10 +114,12 @@
 							
 							<th scope="col" >
 								File Name
+								<br>
 							</th>
 							
 							<th scope="col" >
 								Last Modified
+								<br>
 							</th>
 							
 							<th scope="col" >
@@ -124,173 +134,135 @@
 						
 					</thead>
 					
-					<tbody >
+					<tbody id="table-body" onclick="table.select(event)" >
 						
 						<tr  style="">
 							
-							<th  class="class_36">
+							<th  class="class_30">
 								<br>
-								<i class="bi bi-file-earmark-text class_37">
+								<i class="bi bi-file-earmark-text class_31">
 								</i>
 							</th>
-							<td  class="class_38">
+							
+							<td >
 								My File.txt
+								<br>
+							</td>
+							
+							<td  class="class_32">
+								12th Jan 2023
+								<br>
 							</td>
 							
 							<td >
-								12th Jan 2023
-							</td>
-							
-							<td  class="class_38">
 								21.5Mb
 							</td>
-							<td  class="class_39">
+							
+							<td  class="class_33">
 								<br>
-								<i class="bi bi-cloud-download-fill class_40">
+								<i class="bi bi-cloud-download-fill class_34">
 								</i>
-								<i  class="bi bi-pencil-square class_40">
-								</i>
-								<i  class="bi bi-send-fill class_40">
-								</i>
-								<i  class="bi bi-trash3-fill class_40">
-								</i>
+
 							</td>
 							
 						</tr>
 						
-						<tr  class="class_41">
+						<tr  class="">
 							
-							<th >
+							<th  class="class_30">
 								<br>
-								<i class="bi bi-card-image class_42">
+								<i class="bi bi-card-image class_39">
 								</i>
 							</th>
 							
 							<td >
 								My Image.jpg
+								<br>
 							</td>
+							
 							<td >
-								14th June 2023
+								14th Jun 2023
+								<br>
 							</td>
 							
 							<td >
 								30.8Mb
-								<br>
 							</td>
-							<td  class="class_43">
-								<i class="bi bi-cloud-download-fill class_44">
+							
+							<td  class="class_33">
+								<br>
+								<i class="bi bi-cloud-download-fill class_34" >
 								</i>
-								<i  class="bi bi-pencil-square class_45">
-								</i>
-								<i  class="bi bi-send-fill class_46">
-								</i>
-								<i  class="bi bi-trash3-fill class_47">
-								</i>
+
 							</td>
 							
 						</tr>
 						
-						<tr >
-							<th >
+						<tr  style="">
+							
+							<th  class="class_30">
 								<br>
-								<i class="bi bi-folder2 class_48">
+								<i  class="bi bi-folder class_40">
 								</i>
 							</th>
+							
 							<td >
 								My Folder
 							</td>
+							
+							<td  class="class_32">
+								12th Jan 2023
+								<br>
+							</td>
+							
 							<td >
 								-
 							</td>
-							<td >
-								-
+							
+							<td  class="class_33">
+								<br>
+								<i class="bi bi-cloud-download-fill class_34">
+								</i>
+
 							</td>
-							<td  class="class_43">
-								<i class="bi bi-cloud-download-fill class_44">
-								</i>
-								<i  class="bi bi-pencil-square class_45">
-								</i>
-								<i  class="bi bi-send-fill class_46">
-								</i>
-								<i  class="bi bi-trash3-fill class_47">
-								</i>
-							</td>
+							
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="class_49" >
-				<button  class="class_50" >
+			<div class="class_41" >
+				<button class="class_42"  >
 					Prev
 				</button>
-				<button  class="class_51" >
+				<button class="class_43"  >
 					Next
 				</button>
-				<div class="class_52" >
+				<div class="class_44" >
 				</div>
 			</div>
-			<div class="class_53" >
-				<div class="class_54" >
-					<i class="bi bi-cloud-download-fill class_20">
-					</i>
-					<div  class="class_21" >
-						Download
-					</div>
-				</div>
-				<div class="class_56" >
-					<i  class="bi bi-pencil-fill class_20">
-					</i>
-					<div  class="class_21" >
-						Edit
-					</div>
-				</div>
-				<div class="class_58" >
-					<i  class="bi bi-send-fill class_20">
-					</i>
-					<div  class="class_21" >
-						Move
-					</div>
-				</div>
-				<div class="class_58" >
-					<i  class="bi bi-trash3-fill class_20">
-					</i>
-					<div  class="class_21" >
-						Delete
-					</div>
-				</div>
-				<div class="class_58" >
-					<i  class="bi bi-share-fill class_20">
-					</i>
-					<div  class="class_21" >
-						Share
-					</div>
-				</div>
-				<div class="class_58" >
-					<i  class="bi bi-star-fill class_20">
-					</i>
-					<div  class="class_62" >
-						Add to favorites
-					</div>
-				</div>
-			</div>
+
 		</div>
-		<div class="class_63" >
-			<h1  class="class_64" >
+		<div class="class_47" >
+			<h1 class="class_48"  >
 				File Details
+				<br>
 			</h1>
-			<div class="class_65" >
-				<table  class="item_class_2 class_66">
+			<div class="class_28" >
+			</div>
+			<div class="class_49" >
+				<table  class="item_class_2 class_50">
 					
 					<tbody >
 						
 						<tr >
 							
-							<th  class="class_38">
-								File
+							<th >
+								File:
 							</th>
 							
 							<td >
 								My Text.txt
+								<br>
 							</td>
 							
 						</tr>
@@ -303,16 +275,18 @@
 							
 							<td >
 								234kb
+								<br>
 							</td>
 							
 						</tr>
 						
 						<tr >
-							<th  class="class_67">
+							<th >
 								Date Added:
 							</th>
 							<td >
-								12th Jan 2023
+								12th jan 2023
+								<br>
 							</td>
 						</tr>
 						<tr >
@@ -320,21 +294,137 @@
 								Date Modified:
 							</th>
 							<td >
-								20th June&nbsp; 2023
+								20th Jun 2023
+								<br>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="class_68" >
-				<i class="bi bi-info-circle-fill class_20">
+			<div class="class_51" >
+				<i class="bi bi-info-circle-fill class_17">
 				</i>
-				<div  class="class_9" >
+				<div class="class_9"  >
 					No file was selected
+					<br>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+<!--modals-->
+	<!--sub menu-->
+	<div id="submenu" class="class_45 hide" style="position: absolute;" >
+		<div class="class_46" >
+			<i class="bi bi-cloud-download-fill class_17"></i>
+			<div class="class_9"  >
+				Download
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-pencil-square class_17"></i>
+			<div class="class_9"  >
+				Edit
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-folder-x class_17"></i>
+			<div class="class_9"  >
+				Move
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-trash3-fill class_17"></i>
+			<div class="class_9"  >
+				Delete
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-share-fill class_17"></i>
+			<div class="class_9"  >
+				Share
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-star-fill class_17"></i>
+			<div class="class_9"  >
+				Add to favorites
+			</div>
+		</div>
+	</div>
+	<!--end sub menu-->
+
 </body>
 </html>
+
+<script>
+	
+	var mode = {
+
+		current: 'MYDRIVE',
+
+		set: function(m){
+
+			mode.current = m;
+			alert(mode.current);
+			let selected = document.querySelector(".class_16");
+			selected.classList.remove("class_16");
+			selected.classList.add("class_18");
+
+			let new_selected = document.getElementById(m);
+			new_selected.classList.remove("class_18");
+			new_selected.classList.add("class_16");
+		},
+	};
+
+	const submenu = {
+
+		show:function(e){
+			e.preventDefault();
+
+			let menu = document.getElementById("submenu");
+			menu.style.left = e.clientX + "px";
+			menu.style.top = e.clientY + "px";
+			menu.classList.remove("hide");
+
+			table.select(e);
+		},
+
+		hide:function(){
+			let menu = document.getElementById("submenu");
+			menu.classList.add("hide");
+		},
+
+	};
+
+	const table = {
+
+		selected: null,
+
+		select: function(e){
+
+			table.selected = null;
+			let tbody = document.getElementById("table-body");
+			for (var i = 0; i < tbody.children.length; i++) {
+				tbody.children[i].classList.remove("class_38");
+			}
+
+			let item = e.target;
+			while(item.tagName != 'TR' && item.tagName != 'BODY'){
+				item = item.parentNode;
+			}
+
+			if(item.tagName == 'TR'){
+				table.selected = item;
+				table.selected.classList.add("class_38");
+			}
+		},
+
+	}
+
+	window.addEventListener("click",function(){
+
+		submenu.hide();
+	});
+	
+</script>
