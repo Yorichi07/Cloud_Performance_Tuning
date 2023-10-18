@@ -9,38 +9,63 @@
 </head>
 <body>
 
-	<style>
+	<style>       
 		
-		.hide{
+		.hide{        /* To hide from screen */
 			display: none;
 		}
 
-		.class_46:hover{
+		.class_46:hover{   /*to define hover in sub-menu*/
 			background-color: rgb(125, 125, 125);
 			color: white;
 		}
 
+		.drop-zone:hover{
+			background-color: #ccc;
+			border : dashed 3px rgb(194, 15, 15);
+		}
+
+		.drop-zone{
+			height:200px;
+			border: dashed 2px #000c;
+			border-radius:10px;
+			background-color: #eee;
+			margin:10px;
+			padding:10px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			cursor:pointer;
+			color: #000c;
+		}
+
+		.drop-zone-highlight{
+			background-color: #b9dbd4;
+		}
 	</style>
+
 	<div class="class_1" >
 		<div class="class_2" >
-			<img src="assets/images/placeholder-icon.jpg" class="class_3" >
+			<img src="assets/images/MediaHub.png"class="class_3" >
 		</div>
 		<div class="class_4" >
-			<h1 class="class_5"  >
+			<h1 class="class_5" style="margin-top: 30px;"  >
 				MEDIAHUB
-				<i class="bi bi-cloud-arrow-up-fill class_6"></i>
 			</h1>
 		</div>
 		<div class="class_7" >
 			<img src="assets/images/beautiful-happy-african.jpg" class="class_8" >
-			<div class="class_9"  >
-				Hi User
+			<div class="class_9" style="font-size: large; font: weight 500 ;"  >
+				Hi! User
 			</div>
 		</div>
 	</div>
-	<div class="class_10" >
+	<div class="class_10">
 		<div class="class_11" >
-			<button class="class_12"  >
+			<button onclick="upload.send()" class="class_12"  >
 				+ New Folder
 			</button>
 			<div class="class_13" >
@@ -54,17 +79,17 @@
 					8Gb / 10Gb
 				</div>
 			</div>
-			<div id="MYDRIVE" onclick="mode.set(this.id)" class="class_16" >
+			<div id="MY DRIVE" onclick="mode.set(this.id)" class="class_16" >
 				<i class="bi bi-cloud-arrow-up-fill class_17"></i>
 				<div class="class_9"  >
 					My Drive
 				</div>
 			</div>
-			<div id="FAVORITES" onclick="mode.set(this.id)" class="class_18" >
+			<div id="FAVOURITES" onclick="mode.set(this.id)" class="class_18" >
 				<i class="bi bi-star-fill class_17">
 				</i>
 				<div class="class_9"  >
-					Favorites
+					Favourites
 				</div>
 			</div>
 			<div id="RECENT" onclick="mode.set(this.id)" class="class_18" >
@@ -97,12 +122,11 @@
 					<br>
 				</div>
 			</div>
-			<h1 class="class_27"  >
-				My Files
-				<br>
+			<h1 class="js-mode-title class_27"  >
+				MY DRIVE
 			</h1>
-			<div class="class_28" >
-				<table oncontextmenu="submenu.show(event)" class="item_class_0 class_29">
+			<div class="class_28">
+				<table oncontextmenu="submenu.show(event)" class="item_class_0 class_29">  <!--We are calling a show event for sub-menu when we click on MyFiles table-->
 					
 					<thead >
 						
@@ -114,12 +138,22 @@
 							
 							<th scope="col" >
 								File Name
-								<br>
+							</th>
+
+							<th scope="col" >
+								
+							</th>
+
+							<th scope="col" >
+								Type
 							</th>
 							
 							<th scope="col" >
-								Last Modified
-								<br>
+								Created
+							</th>
+
+							<th scope="col" >
+								Updated
 							</th>
 							
 							<th scope="col" >
@@ -134,8 +168,9 @@
 						
 					</thead>
 					
-					<tbody id="table-body" onclick="table.select(event)" >
+					<tbody id="table-body" onclick="table.select(event)" >  <!--Here we are calling table.select so to define selection of a row in a table--> 
 						
+						<!--
 						<tr  style="">
 							
 							<th  class="class_30">
@@ -159,10 +194,7 @@
 							</td>
 							
 							<td  class="class_33">
-								<br>
-								<i class="bi bi-cloud-download-fill class_34">
-								</i>
-
+								<i class="bi bi-cloud-download-fill class_34"></i>
 							</td>
 							
 						</tr>
@@ -227,6 +259,8 @@
 							</td>
 							
 						</tr>
+						-->
+						
 					</tbody>
 				</table>
 			</div>
@@ -249,66 +283,73 @@
 			</h1>
 			<div class="class_28" >
 			</div>
-			<div class="class_49" >
+			<div class="js-file-info hide class_49" >
 				<table  class="item_class_2 class_50">
 					
 					<tbody >
-						
 						<tr >
-							
 							<th >
 								File:
 							</th>
-							
-							<td >
-								My Text.txt
-								<br>
+							<td class="file_name">
+
 							</td>
-							
 						</tr>
-						
+
 						<tr >
-							
 							<th >
 								Size:
 							</th>
-							
-							<td >
-								234kb
-								<br>
+							<td class="file_size">
+
 							</td>
-							
 						</tr>
 						
 						<tr >
 							<th >
 								Date Added:
 							</th>
-							<td >
-								12th jan 2023
-								<br>
+							<td class="date_created" >
+
 							</td>
 						</tr>
+
 						<tr >
 							<th >
 								Date Modified:
 							</th>
-							<td >
-								20th Jun 2023
-								<br>
+							<td class="date_updated">
+
 							</td>
 						</tr>
+
 					</tbody>
 				</table>
 			</div>
-			<div class="class_51" >
+			<div class="js-info-no-file class_51" >
 				<i class="bi bi-info-circle-fill class_17">
 				</i>
 				<div class="class_9"  >
-					No file was selected
-					<br>
+					No file is selected
 				</div>
 			</div>
+			<label class="drop-zone" ondrop="upload.drop(event)" ondragover="upload.dragOver(event)" ondragleave="upload.dropZone.removeHighlight()">
+				<i class="bi bi-cloud-arrow-up-fill class_6"></i>
+				Drag and Drop files or Click here to upload
+
+				<input onchange="upload.send(this.files)" type="file" class="hide" multiple> 
+				<div class="js-prog-holder hide class_13" style="position: static;height: auto;background-color: transparent;">
+					<div class="class_14" >
+						<div class="js-prog class_15" ></div>
+					</div>
+					<div class="js-prog-text class_9"  >
+						50%
+					</div>
+					<button onclick="upload.cancel()" class="class_42"  >
+						Cancel Upload
+					</button>
+				</div>
+			</label>
 		</div>
 	</div>
 
@@ -359,14 +400,16 @@
 
 <script>
 	
+	var LOGGED_IN = false;
+
 	var mode = {
 
-		current: 'MYDRIVE',
+		current: 'MY DRIVE',
 
 		set: function(m){
 
 			mode.current = m;
-			alert(mode.current);
+			document.querySelector(".js-mode-title").innerHTML = (mode.current);
 			let selected = document.querySelector(".class_16");
 			selected.classList.remove("class_16");
 			selected.classList.add("class_18");
@@ -374,6 +417,8 @@
 			let new_selected = document.getElementById(m);
 			new_selected.classList.remove("class_18");
 			new_selected.classList.add("class_16");
+
+			table.refresh(mode.current);
 		},
 	};
 
@@ -383,8 +428,8 @@
 			e.preventDefault();
 
 			let menu = document.getElementById("submenu");
-			menu.style.left = e.clientX + "px";
-			menu.style.top = e.clientY + "px";
+			menu.style.left = e.clientX + "px";   /*x position on MYFiles Table*/
+			menu.style.top = e.clientY + "px";	  /*y position on MYFiles Table*/
 			menu.classList.remove("hide");
 
 			table.select(e);
@@ -397,13 +442,19 @@
 
 	};
 
-	const table = {
+	const table = {           //Main Table
 
 		selected: null,
+		selected_id:null,
+		ROWS : [],
 
 		select: function(e){
 
+			let old_selected_id = table.selected_id;
+
 			table.selected = null;
+			table.selected_id = null;
+
 			let tbody = document.getElementById("table-body");
 			for (var i = 0; i < tbody.children.length; i++) {
 				tbody.children[i].classList.remove("class_38");
@@ -415,15 +466,204 @@
 			}
 
 			if(item.tagName == 'TR'){
-				table.selected = item;
-				table.selected.classList.add("class_38");
+
+				if(old_selected_id == null || item.getAttribute('id') != old_selected_id)
+				{
+
+					table.selected = item;
+					table.selected_id = item.getAttribute('id');
+					table.selected.classList.add("class_38");
+					file_info.show(item.getAttribute('id').replace("tr_",""));
+
+				}else{
+					file_info.hide();
+				}
 			}
 		},
 
+		refresh: function(MODE = 'MY DRIVE'){
+
+			//show a loader
+			let tbody = document.querySelector("#table-body");
+			tbody.innerHTML="<tr><td colspan='10' style='text-align:center;padding:10px'><img src='loader.gif' style='width:100px;height:100px'/></td></tr>";
+
+			//hide file info
+			file_info.hide();
+
+			let myform = new FormData();
+			myform.append('data_type','get_files');
+			myform.append('mode',MODE);
+
+			let xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4){
+					if(xhr.status ==  200)
+					{
+						//recreate table
+						let tbody = document.querySelector("#table-body");
+						tbody.innerHTML = '';   //first we gonna empty table body then add elements
+
+						let obj = JSON.parse(xhr.responseText);
+						if(obj.success && obj.data_type == "get_files")
+						{ 	
+							table.ROWS = obj.rows;
+							for(var i = 0; i<obj.rows.length;i++){
+								let tr = document.createElement('tr');
+								tr.setAttribute('id',i);
+
+								let star = '<i class="bi bi-star class_34"></i>';
+								if(obj.rows[i].favourite == 1){
+									star = '<i class="bi bi-star-fill class_34"></i>';
+								}
+
+								tr.innerHTML = 
+								`<td style="display:flex;justify-content:center;align-items:center;border:none;">${obj.rows[i].icon}</td>
+								<td>${obj.rows[i].file_name}</td>
+								<td style="display:flex; justify-content:center; align-items:center;border:none;">${star}</td>
+								<td>${obj.rows[i].file_type}</td>
+								<td>${obj.rows[i].date_created}</td>
+								<td>${obj.rows[i].date_updated}</td>
+								<td>${obj.rows[i].file_size}</td><td style="display:flex; justify-content:center; align-items:center;border:none;"><i class="bi bi-cloud-download-fill class_34"></i></td>`;
+								tbody.appendChild(tr);
+							}
+						}else{
+							tbody.innerHTML = "<tr><td colspan='10' style='text-align:center'>No files found!</td><tr>";
+						}
+
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+					}
+				}
+			});
+
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+
+		},
 	}
 
-	window.addEventListener("click",function(){
+	const upload = {
 
+		cancelled: false,
+		cancel:function(){
+			upload.cancelled = true;
+		},
+
+		dropZone: {
+
+			highlight: function(){
+				document.querySelector(".drop-zone").classList.add("drop-zone-highlight");
+			},
+			removeHighlight: function(){
+				document.querySelector(".drop-zone").classList.remove("drop-zone-highlight");
+			},
+		},
+
+		drop: function(e){
+			event.preventDefault();
+			upload.dropZone.removeHighlight();
+			upload.send(e.dataTransfer.files);
+		},
+
+		dragOver: function(e){
+			event.preventDefault();
+			upload.dropZone.highlight()
+		},
+
+		send: function(files) {
+
+			if(upload.uploading){
+				alert("Please wait for the upload to complete!");
+				return;
+			}
+
+			upload.uploading=true;
+			upload.cancelled = false;
+			let myform = new FormData();
+
+			myform.append('data_type','upload_files');
+
+			for(var i=0; i<files.length; i++){
+				myform.append('file'+i,files[i]);
+			}
+
+			document.querySelector(".js-prog").style.width = "0%";
+			document.querySelector(".js-prog-text").innerHTML = "0%";
+			document.querySelector(".js-prog-holder").classList.remove("hide");
+
+			let xhr = new XMLHttpRequest();
+
+			xhr.addEventListener('error',function(e){
+				alert("An error occured! Please check your internet connection");
+			});
+
+			xhr.upload.addEventListener('progress',function(e){
+				let percent = Math.round((e.loaded / e.total) * 100);
+				document.querySelector(".js-prog").style.width = percent + "%";
+				document.querySelector(".js-prog-text").innerHTML = percent + "%";
+
+				if(upload.cancelled){
+					xhr.abort();
+					alert("Your upload was cancelled!");
+					document.querySelector(".js-prog").style.width = "0%";
+					document.querySelector(".js-prog-text").innerHTML = "0%";
+					document.querySelector(".js-prog-holder").classList.add("hide");
+				}
+			});
+
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4){
+					if(xhr.status ==  200){
+						let obj = JSON.parse(xhr.responseText);
+						if(obj.success){
+							alert("Upload Complete!");
+							table.refresh();
+						}else{
+							alert("Could not complete upload!");
+						}
+						document.querySelector(".js-prog").style.width = "0%";
+						document.querySelector(".js-prog-text").innerHTML = "0%";
+						document.querySelector(".js-prog-holder").classList.add("hide");
+						
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+						alert("An error occured! Please try again later");
+					}
+
+					upload.uploading=false;
+				}
+			});
+
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+			}
+		}
+	
+	var file_info = {
+		show: function(id){
+
+			let row = table.ROWS[id];
+			document.querySelector(".js-info-no-file").classList.add("hide");
+			let file_info_panel = document.querySelector(".js-file-info");
+			file_info_panel.classList.remove("hide");
+			file_info_panel.querySelector(".file_name").innerHTML = row.file_name;
+			file_info_panel.querySelector(".file_size").innerHTML = row.file_size;
+			file_info_panel.querySelector(".date_created").innerHTML = row.date_created;
+			file_info_panel.querySelector(".date_updated").innerHTML = row.date_updated;
+		},
+
+		hide: function(){
+			document.querySelector(".js-info-no-file").classList.remove("hide");
+			document.querySelector(".js-file-info").classList.add("hide");
+			
+		},
+
+	}	
+
+	table.refresh();
+	window.addEventListener("click",function(){
 		submenu.hide();
 	});
 	
