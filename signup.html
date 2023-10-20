@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MEDIAHUB SIGNUP PAGE</title>
+	<link rel="stylesheet" type="text/css" href="assets_signup_login/css/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets_signup_login/css/styles.css?2459">
+</head>
+
+<body background="assets_signup_login/images/rm373-15.jpg">
+
+	<style>
+		.hide{
+			display: none;
+		}
+	</style>
+	
+	<section class="class_1" >
+		<form onsubmit="signup.submit(event)" method="post" enctype="multipart/form-data" class="class_2" >
+			<h1  class="class_3" >
+				<span class="class_4">
+					MEDIAHUB
+				</span>
+			</h1>
+			<img src="assets_signup_login/images/3530103_64682.jpg" class="class_5" >
+			<h1  class="class_6" >
+				SIGNUP
+			</h1>
+			<div class="js-error-banner hide" style="background-color: #db3232;
+			color: #ffffff;
+			text-align: center;
+			padding: 5px;
+			border-radius: 30px;
+			margin-top: 5px;
+			width: 270px;">
+				Please fix the errors below!
+			</div>  
+			<div class="class_7" >
+				<div class="class_8" >
+					<label  class="class_9" >
+						<b class="class_10">
+							USERNAME:
+						</b>
+					</label>
+					<input placeholder="Enter a Username" type="text" name="username" class="class_11" required>
+				</div>
+				<small class="error error-username hide " style="color: rgb(212, 0, 0);align-items: start;font-size: 15px;"></small>
+				<div class="class_8" >
+					<label  class="class_9" >
+						<b  class="class_12">
+							EMAIL:
+						</b>
+					</label>
+					<input placeholder="Enter a valid Email" type="email" name="email" class="class_13" required>
+				</div>
+				<small class="error error-email hide " style="color: rgb(212, 0, 0);align-items: start;font-size: 15px;"></small>
+				<div class="class_8" >
+					<label  class="class_9" >
+						<b class="class_14" >
+							PASSWORD:
+						</b>
+					</label>
+					<input placeholder="Enter a Password" type="password" name="password" class="class_11" required>
+				</div>
+				<small class="error error-password hide " style="color: rgb(212, 0, 0);align-items: start;font-size: 15px;"></small>
+				<div class="class_8" >
+					<label  class="class_9" >
+						<b class="class_14" >
+							RETYPE PASSWORD:
+						</b>
+					</label>
+					<input placeholder="Retype Password" type="password" name="retype_password" class="class_11" required>
+				</div>
+			</div>
+			<div style=" text-align: center;padding-bottom: 15px;">
+				Already have an account? <a href="login.html">Login here</a>
+			</div>
+			<button  class="js-button class_15" >
+				<b>
+					SIGNUP
+				</b>
+			</button>
+		</form>
+	</section>
+	
+</body>
+</html>
+
+<script>
+
+		const signup = {           
+		uploading: false,
+		submit: function(e){
+
+			e.preventDefault();
+
+			if(signup.uploading){
+				alert("Already Uploading. Please wait...");
+				return;
+			}
+			let button = document.querySelector(".js-button");
+			button.innerHTML="Saving...";
+
+			let myform = new FormData();
+			myform.append('data_type','user_signup');
+
+			//get all inputs
+			let inputs = e.currentTarget.querySelectorAll("input,select,textarea");
+			for(var i = 0; i<inputs.length;i++){
+				myform.append(inputs[i].name,inputs[i].value.trim());
+			}
+
+			signup.uploading=true;
+			let xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4)
+				{
+					signup.uploading=false;
+					let button = document.querySelector(".js-button");
+					button.innerHTML="SIGNUP";
+
+					if(xhr.status ==  200)
+					{
+						let obj = JSON.parse(xhr.responseText);		//request body converted from JSON to JS equivalent format to operate on it 
+						document.querySelector(".js-error-banner").classList.add('hide');
+						
+						if(obj.success && obj.data_type == "user_signup")
+						{ 	
+							alert('Your account was created! Please login to continue');
+							window.location.href='login.html'; 
+						}else{
+							//errors
+							let form = document.querySelector('form');
+
+							//remove old error messages
+							let errors = document.querySelectorAll(".error");
+							document.querySelector(".js-error-banner").classList.remove('hide');
+
+							for(var i = 0; i<errors.length;i++){
+								errors[i].innerHTML='';
+								errors[i].classList.add('hide');
+							}
+
+							//show new error messages
+							for(key in obj.errors){
+								let item = document.querySelector(".error-"+key);
+								item.innerHTML = obj.errors[key];
+								item.classList.remove("hide");
+							}
+						}
+
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+					}
+				}
+			});
+
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+
+		},
+	}
+
+</script>

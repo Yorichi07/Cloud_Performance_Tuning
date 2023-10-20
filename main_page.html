@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>my drive main page</title>
+	<link rel="stylesheet" type="text/css" href="assets_main_page/css/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets_main_page/css/styles.css">
+</head>
+<body>
+
+	<style>       
+		
+		.hide{        /* To hide from screen */
+			display: none;
+		}
+
+		.class_46:hover{   /*to define hover in sub-menu*/
+			background-color: rgb(125, 125, 125);
+			color: white;
+		}
+
+		.drop-zone:hover{
+			background-color: #ccc;
+			border : dashed 3px rgb(194, 15, 15);
+		}
+
+		.drop-zone{
+			height:200px;
+			border: dashed 2px #000c;
+			border-radius:10px;
+			background-color: #eee;
+			margin:10px;
+			padding:10px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			cursor:pointer;
+			color: #000c;
+		}
+
+		.drop-zone-highlight{
+			background-color: #b9dbd4;
+		}
+	</style>
+
+	<div class="class_1" >
+		<div class="class_2" >
+			<img src="assets_main_page/images/MediaHub.png"class="class_3" >
+		</div>
+		<div class="class_4" >
+			<h1 class="class_5" style="margin-top: 30px;"  >
+				MEDIAHUB
+			</h1>
+		</div>
+		<div class="class_7" >
+			<img src="assets_main_page/images/beautiful-happy-african.jpg" class="class_8" >
+			<div class="class_9" style="font-size: large; font: weight 500 ;"  >
+				Hi! <span class="username">User</span> <a href="#" onclick="table.logout()">[Logout]</a>
+			</div>
+		</div>
+	</div>
+	<div class="class_10">
+		<div class="class_11" >
+			<button onclick="action.show_new_folder()" class="class_12"  >
+				+ New Folder
+			</button>
+			<div class="class_13" >
+				<div class="class_9"  >
+					Drive Space
+				</div>
+				<div class="class_14" >
+					<div class="js-drive-space-percent class_15" ></div>
+				</div>
+				<div class="js-drive-space-text class_9"  >
+					8Gb / 10Gb
+				</div>
+			</div>
+			<div id="MY DRIVE" onclick="mode.set(this.id)" class="class_16" >
+				<i class="bi bi-cloud-arrow-up-fill class_17"></i>
+				<div class="class_9"  >
+					My Drive
+				</div>
+			</div>
+			<div id="FAVOURITES" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-star-fill class_17">
+				</i>
+				<div class="class_9"  >
+					Favourites
+				</div>
+			</div>
+			<div id="RECENT" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-alarm-fill class_17">
+				</i>
+				<div class="class_9"  >
+					Recent
+				</div>
+			</div>
+			<div id="TRASH" onclick="mode.set(this.id)" class="class_18" >
+				<i class="bi bi-trash3-fill class_17">
+				</i>
+				<div class="class_9"  >
+					Trash
+				</div>
+			</div>
+		</div>
+		<div class="class_22" >
+			<div id="breadcrumbs" class="class_23" >
+				<div onclick="table.change_folder_by_id(0)" class="class_24"  >
+					My Drive
+				</div>
+					<!--
+					<div class="class_25"  >
+						My First Folder
+					</div>
+					<div class="class_26"  >
+						My Second Folder
+					</div>
+					-->
+			</div>
+			<h1 class="js-mode-title class_27"  >
+				MY DRIVE
+			</h1>
+			<div class="class_28">
+				<table oncontextmenu="submenu.show(event)" class="item_class_0 class_29">  <!--We are calling a show event for sub-menu when we click on MyFiles table-->
+					
+					<thead >
+						
+						<tr >
+							
+							<th scope="col" >
+								#
+							</th>
+							
+							<th scope="col" >
+								File Name
+							</th>
+
+							<th scope="col" >
+								
+							</th>
+
+							<th scope="col" >
+								Type
+							</th>
+							
+							<th scope="col" >
+								Created
+							</th>
+
+							<th scope="col" >
+								Updated
+							</th>
+							
+							<th scope="col" >
+								Size
+							</th>
+							
+							<th scope="col" >
+								Action
+							</th>
+							
+						</tr>
+						
+					</thead>
+					
+					<tbody id="table-body" ondblclick="table.change_folder(event)" onclick="table.select(event)" >  <!--Here we are calling table.select so to define selection of a row in a table--> 
+
+					</tbody>
+				</table>
+			</div>
+			<div class="class_41" >
+				<button class="class_42"  >
+					Prev
+				</button>
+				<button class="class_43"  >
+					Next
+				</button>
+				<div class="class_44" >
+				</div>
+			</div>
+
+		</div>
+		<div class="class_47" >
+			<h1 class="class_48"  >
+				File Details
+				<br>
+			</h1>
+			<div class="class_28" >
+			</div>
+			<div class="js-file-info hide class_49" >
+				<table  class="item_class_2 class_50">
+					
+					<tbody >
+						<tr >
+							<th >
+								File:
+							</th>
+							<td class="file_name">
+
+							</td>
+						</tr>
+
+						<tr >
+							<th >
+								Size:
+							</th>
+							<td class="file_size">
+
+							</td>
+						</tr>
+						
+						<tr >
+							<th >
+								Date Added:
+							</th>
+							<td class="date_created" >
+
+							</td>
+						</tr>
+
+						<tr >
+							<th >
+								Date Modified:
+							</th>
+							<td class="date_updated">
+
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="js-info-no-file class_51" >
+				<i class="bi bi-info-circle-fill class_17">
+				</i>
+				<div class="class_9"  >
+					No file is selected
+				</div>
+			</div>
+			<label class="drop-zone" ondrop="upload.drop(event)" ondragover="upload.dragOver(event)" ondragleave="upload.dropZone.removeHighlight()">
+				<i class="bi bi-cloud-arrow-up-fill class_6"></i>
+				Drag and Drop files or Click here to upload
+
+				<input onchange="upload.send(this.files)" type="file" class="hide" multiple> 
+				<div class="js-prog-holder hide class_13" style="position: static;height: auto;background-color: transparent;">
+					<div class="class_14" >
+						<div class="js-prog class_15" ></div>
+					</div>
+					<div class="js-prog-text class_9"  >
+						50%
+					</div>
+					<button onclick="upload.cancel()" class="class_42"  >
+						Cancel Upload
+					</button>
+				</div>
+			</label>
+		</div>
+	</div>
+
+<!--modals-->
+	<!--sub menu-->
+	<div id="submenu" class="class_45 hide" style="position: absolute;" >
+		<div onclick="table.download_file()" class="js-download-button class_46" >
+			<i class="bi bi-cloud-download-fill class_17"></i>
+			<div class="class_9"  >
+				Download
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-pencil-square class_17"></i>
+			<div class="class_9"  >
+				Edit
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-folder-x class_17"></i>
+			<div class="class_9"  >
+				Move
+			</div>
+		</div>
+		<div onclick ="table.delete_row()" class="class_46" >
+			<i class="bi bi-trash3-fill class_17"></i>
+			<div class="class_9"  >
+				Delete
+			</div>
+		</div>
+		<div onclick ="table.restore_row()" class="js-restore-button class_46" >
+			<i class="bi bi-arrow-counterclockwise class_17"></i>
+			<div class="class_9"  >
+				Restore
+			</div>
+		</div>
+		<div class="class_46" >
+			<i class="bi bi-share-fill class_17"></i>
+			<div class="class_9"  >
+				Share
+			</div>
+		</div>
+		<div onclick="table.add_to_favourites()" class="js-favourites-button class_46" >
+			<i class="bi bi-star-fill class_17"></i>
+			<div class="js-favourites-text class_9"  >
+				Add to favourites
+			</div>
+		</div>
+	</div>
+	<!--end sub menu-->
+
+	<!-- start new folder modal-->
+	<div class="js-new-folder hide" onclick="this.classList.add('hide')" style="position:fixed;top:0px;left:0px;width:100vw;height:100vh;background-color:#00000088">
+		<div onclick="event.stopPropagation()" style="border-radius:30px;transform: translate(-50%,-50%);position:absolute;left:50%;top:50%;width:100%;max-width: 400px;min-height: 200px;background-color: white;padding:10px;text-align:center;">
+			<div onclick="document.querySelector('.js-new-folder').classList.add('hide')" style="text-align:right"><button class="class_42" style="padding-top:4px;padding-bottom:4px;background-color: red;">X</button></div>
+			<h3><i class="bi bi-folder-fill"></i> New Folder</h3>
+			<input class="js-new-folder-input" type="text" style="border-radius:30px;width:100%;padding:1em;border: solid thin #ccc;" name="">
+			<button onclick="action.new_folder(this)" class="class_42" style="width:100px; margin-top: 20px;">Save</button>
+		</div>
+	</div>
+	<!-- end new folder modal-->
+
+</body>
+</html>
+
+<script>
+	
+	var LOGGED_IN = false;
+	var USERNAME = false;
+	var FOLDER_ID = 0;
+
+	var mode = {
+
+		current: 'MY DRIVE',
+
+		set: function(m){
+
+			mode.current = m;
+			document.querySelector(".js-mode-title").innerHTML = (mode.current);
+			let selected = document.querySelector(".class_16");
+			selected.classList.remove("class_16");
+			selected.classList.add("class_18");
+
+			let new_selected = document.getElementById(m);
+			new_selected.classList.remove("class_18");
+			new_selected.classList.add("class_16");
+
+			table.refresh(mode.current);
+		},
+	};
+
+	const submenu = {
+
+		show:function(e)
+		{
+			e.preventDefault();
+
+			table.select(e, 'rightclick');
+			
+			let menu = document.getElementById("submenu");
+			menu.style.left = e.clientX + "px";   /*x position on MYFiles Table*/
+			menu.style.top = e.clientY + window.scrollY +"px";	  /*y position on MYFiles Table*/
+
+			//check if this item is favourited
+			document.querySelector("#submenu .js-favourites-text").innerHTML = "Add to favourites";
+			document.querySelector("#submenu .js-download-button").classList.add("hide");
+			document.querySelector("#submenu .js-favourites-button").classList.add("hide");
+			document.querySelector("#submenu .js-restore-button").classList.add("hide");
+			
+			let id = table.selected.getAttribute('id').replace("tr_","");			
+			if(table.ROWS[id].favourite == 1)
+			{
+				document.querySelector("#submenu .js-favourites-text").innerHTML = "Remove from favourites";
+			}
+			
+			if(table.ROWS[id].file_type != 'folder')
+			{
+				document.querySelector("#submenu .js-download-button").classList.remove("hide");
+				document.querySelector("#submenu .js-favourites-button").classList.remove("hide");
+			}
+
+			if(mode.current == 'TRASH')
+			{
+				document.querySelector("#submenu .js-restore-button").classList.remove("hide");
+			}
+
+			menu.classList.remove("hide");
+
+		},
+
+		hide:function(){
+			let menu = document.getElementById("submenu");
+			menu.classList.add("hide");
+		},
+
+	};
+
+	const table = {           //Main Table
+
+		selected: null,
+		selected_id:null,
+		ROWS : [],
+
+		select: function(e, mode='leftclick'){
+
+			let old_selected_id = table.selected_id;
+
+			table.selected = null;
+			table.selected_id = null;
+
+			let tbody = document.getElementById("table-body");
+			for (var i = 0; i < tbody.children.length; i++) {
+				tbody.children[i].classList.remove("class_38");
+			}
+
+			let item = e.target;
+			while(item.tagName != 'TR' && item.tagName != 'BODY'){
+				item = item.parentNode;
+			}
+
+			if(item.tagName == 'TR'){
+
+				if(mode == 'rightclick' || (old_selected_id == null || item.getAttribute('id') != old_selected_id))
+				{
+
+					table.selected = item;
+					table.selected_id = item.getAttribute('id');
+					table.selected.classList.add("class_38");
+
+					file_info.show(item.getAttribute('id').replace("tr_",""));
+				}else{
+					file_info.hide();
+				}
+			}
+		},
+
+		download_file: function()
+		{
+			let id = table.selected.getAttribute('id').replace("tr_","");
+			window.location.href = "download.php?id=" + table.ROWS[id].id;
+		},
+
+		add_to_favourites: function()
+		{
+
+			let id = table.selected.getAttribute('id').replace("tr_","");			
+			
+			if(table.ROWS[id].file_type == 'folder')
+				return;
+
+			let obj = {};
+			obj.id 	= table.ROWS[id].id;
+			obj.data_type = 'add_to_favourites';
+			
+			action.send(obj);
+		},
+
+		change_folder_by_id: function(folder_id){
+			
+			FOLDER_ID = parseInt(folder_id);
+			table.refresh();
+		},
+
+		change_folder: function(e){
+
+			let item = e.target;
+			while(item.tagName != 'TR' && item.tagName != 'BODY'){
+				item = item.parentNode;
+			}
+
+			if(item.tagName == 'TR'){
+
+				let folder_id = item.getAttribute("folder_id");
+				if(folder_id){
+
+					FOLDER_ID = parseInt(folder_id);
+					table.refresh();
+				}
+
+			}
+		},
+
+		delete_row: function(){
+
+			if(!table.selected){
+				alert("Please select a row to delete!");
+				return;
+			}
+
+			if(!confirm("Are you sure you want to delete this item?!")){
+				return;
+			}
+
+			let obj = {};
+			obj.data_type = 'delete_row';
+			obj.file_type = table.selected.getAttribute('type');
+
+			let id = table.selected.getAttribute('id').replace("tr_","");
+			obj.id = table.ROWS[id].id;
+			action.send(obj);
+		},
+
+		restore_row: function(){
+
+			if(!table.selected){
+				alert("Please select a row to restore!");
+				return;
+			}
+
+			if(!confirm("Are you sure you want to restore this item?!")){
+				return;
+			}
+
+			let obj = {};
+			obj.data_type = 'restore_row';
+			obj.file_type = table.selected.getAttribute('type');
+
+			let id = table.selected.getAttribute('id').replace("tr_","");
+			obj.id = table.ROWS[id].id;
+			action.send(obj);
+		},
+
+		refresh: function(MODE = 'MY DRIVE'){
+
+			//show a loader
+			let tbody = document.querySelector("#table-body");
+			tbody.innerHTML="<tr><td colspan='10' style='text-align:center;padding:10px'><img src='loader.gif' style='width:100px;height:100px'/></td></tr>";
+
+			//hide file info
+			file_info.hide();
+
+			let myform = new FormData();
+			myform.append('data_type','get_files');
+			myform.append('mode',MODE);
+			myform.append('folder_id',FOLDER_ID);
+
+			let xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4){
+					if(xhr.status ==  200)
+					{
+						//recreate table
+						let tbody = document.querySelector("#table-body");
+						tbody.innerHTML = '';   //first we gonna empty table body then add elements
+
+						console.log(xhr.responseText);
+						let obj = JSON.parse(xhr.responseText);
+						
+						//display username
+						if(!USERNAME){
+							USERNAME=obj.username;
+							document.querySelector(".username").innerHTML = obj.username;
+						}
+
+						//check if user is logged in 
+						LOGGED_IN = obj.LOGGED_IN;
+						if(!LOGGED_IN){
+							window.location.href = 'login.html';
+						}
+
+						//update breadcrumbs
+						let crumbs = document.querySelector("#breadcrumbs");
+						crumbs.innerHTML = `<div onclick="table.change_folder_by_id(0)" class="class_24">My Drive</div>`;
+
+						for (var i = obj.breadcrumbs.length - 1; i >= 0; i--) {
+							
+							let class_name = 'class_25';
+							if(i == 0)
+								class_name = 'class_26';
+
+							crumbs.innerHTML += `<div onclick="table.change_folder_by_id(${obj.breadcrumbs[i].id})" class="${class_name}">${obj.breadcrumbs[i].name}</div>`;
+						}
+
+						if(obj.success && obj.data_type == "get_files")
+						{ 	
+							//update drive space 
+							let drive_occupied = (obj.drive_occupied / (1024*1024*1024)).toFixed(2);
+							let drive_percent = Math.round((drive_occupied/obj.drive_total) * 100);
+
+							document.querySelector(".js-drive-space-text").innerHTML = `${drive_occupied}GB / ${obj.drive_total}GB`;
+							document.querySelector(".js-drive-space-percent").style.width = `${drive_percent}%`;
+
+							table.ROWS = obj.rows;
+
+							for(var i = 0; i<obj.rows.length;i++){
+
+								let tr = document.createElement('tr');
+								tr.setAttribute('id','tr_'+i);
+
+								if(obj.rows[i].file_type == 'folder'){
+									tr.setAttribute('type','folder');
+								}else{
+									tr.setAttribute('type','file');
+								}
+
+								if(obj.rows[i].file_type == 'folder')
+									tr.setAttribute('folder_id',+ obj.rows[i].id);
+
+								let star = '';
+								if(obj.rows[i].file_type != 'folder')
+								{
+
+									star = '<i class="bi bi-star class_34"></i>';
+									if(obj.rows[i].favourite == 1)
+										star = '<i class="bi bi-star-fill class_34"></i>';
+								}
+								
+								let download_link="";
+								if(obj.rows[i].file_type != 'folder')
+								{
+									download_link = `<a href="download.php?id=${obj.rows[i].id}"><i class="bi bi-cloud-download-fill class_34"></i></a>`;
+								}
+
+								tr.innerHTML = 
+								`<td style="display:flex;justify-content:center;align-items:center;border:none;">${obj.rows[i].icon}</td>
+								<td>${obj.rows[i].file_name}</td>
+								<td style="display:flex; justify-content:center; align-items:center;border:none;">${star}</td>
+								<td>${obj.rows[i].file_type}</td>
+								<td>${obj.rows[i].date_created}</td>
+								<td>${obj.rows[i].date_updated}</td>
+								<td>${obj.rows[i].file_size}</td>
+								<td style="display:flex; justify-content:center; align-items:center;border:none;">${download_link}</td>`;
+								tbody.appendChild(tr);
+							}
+						}else{
+							tbody.innerHTML = "<tr><td colspan='10' style='text-align:center'>No files found!</td><tr>";
+						}
+
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+					}
+				}
+			});
+
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+
+		},
+
+		logout: function(){
+			let myform = new FormData();
+			myform.append('data_type','user_logout');
+
+			let xhr = new XMLHttpRequest();
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4){
+					if(xhr.status ==  200)
+					{
+						window.location.href = 'login.html';
+
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+					}
+				}
+			});
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+		},
+	}
+
+	const upload = {
+
+		cancelled: false,
+		cancel:function(){
+			upload.cancelled = true;
+		},
+
+		dropZone: {
+
+			highlight: function(){
+				document.querySelector(".drop-zone").classList.add("drop-zone-highlight");
+			},
+			removeHighlight: function(){
+				document.querySelector(".drop-zone").classList.remove("drop-zone-highlight");
+			},
+		},
+
+		drop: function(e){
+			event.preventDefault();
+			upload.dropZone.removeHighlight();
+			upload.send(e.dataTransfer.files);
+		},
+
+		dragOver: function(e){
+			event.preventDefault();
+			upload.dropZone.highlight()
+		},
+
+		send: function(files) {
+
+			if(upload.uploading){
+				alert("Please wait for the upload to complete!");
+				return;
+			}
+
+			upload.uploading=true;
+			upload.cancelled = false;
+			let myform = new FormData();
+
+			myform.append('data_type','upload_files');
+			myform.append('folder_id',FOLDER_ID);
+
+			for(var i=0; i<files.length; i++){
+				myform.append('file'+i,files[i]);
+			}
+
+			document.querySelector(".js-prog").style.width = "0%";
+			document.querySelector(".js-prog-text").innerHTML = "0%";
+			document.querySelector(".js-prog-holder").classList.remove("hide");
+
+			let xhr = new XMLHttpRequest();
+
+			xhr.addEventListener('error',function(e){
+				alert("An error occured! Please check your internet connection");
+			});
+
+			xhr.upload.addEventListener('progress',function(e){
+				let percent = Math.round((e.loaded / e.total) * 100);
+				document.querySelector(".js-prog").style.width = percent + "%";
+				document.querySelector(".js-prog-text").innerHTML = percent + "%";
+
+				if(upload.cancelled){
+					xhr.abort();
+					alert("Your upload was cancelled!");
+					document.querySelector(".js-prog").style.width = "0%";
+					document.querySelector(".js-prog-text").innerHTML = "0%";
+					document.querySelector(".js-prog-holder").classList.add("hide");
+				}
+			});
+
+			xhr.addEventListener('readystatechange',function(){
+				if(xhr.readyState == 4){
+					if(xhr.status ==  200){
+						console.log(xhr.responseText);
+						let obj = JSON.parse(xhr.responseText);
+						if(obj.success){
+							alert("Upload Complete!");
+							table.refresh();
+						}else{
+							alert("Could not complete upload!");
+						}
+						document.querySelector(".js-prog").style.width = "0%";
+						document.querySelector(".js-prog-text").innerHTML = "0%";
+						document.querySelector(".js-prog-holder").classList.add("hide");
+						
+					}else{
+						//error handling
+						console.log(xhr.responseText);
+						alert("An error occured! Please try again later");
+					}
+
+					upload.uploading=false;
+				}
+			});
+
+			xhr.open('POST','api.php',true);
+			xhr.send(myform);
+			}
+		}
+	
+	var file_info = {
+
+		show: function(id){
+
+			let row = table.ROWS[id];
+			document.querySelector(".js-info-no-file").classList.add("hide");
+			let file_info_panel = document.querySelector(".js-file-info");
+			file_info_panel.classList.remove("hide");
+			file_info_panel.querySelector(".file_name").innerHTML = row.file_name;
+			file_info_panel.querySelector(".file_size").innerHTML = row.file_size;
+			file_info_panel.querySelector(".date_created").innerHTML = row.date_created;
+			file_info_panel.querySelector(".date_updated").innerHTML = row.date_updated;
+		},
+
+		hide: function(){
+			document.querySelector(".js-info-no-file").classList.remove("hide");
+			document.querySelector(".js-file-info").classList.add("hide");
+			
+		},
+
+	}	
+
+	table.refresh();
+	window.addEventListener("click",function(){
+		submenu.hide();
+	});
+	
+	const action = {
+
+		uploading: false,
+		cancelled: false,
+
+		new_folder: function(){
+
+			let box = document.querySelector(".js-new-folder");
+			let text = box.querySelector("input").value.trim();
+			box.classList.add("hide");
+
+			let obj = {};
+			obj.data_type = 'new_folder';
+			obj.name = text;
+			obj.folder_id = FOLDER_ID;
+
+			action.send(obj);
+		},
+
+		show_new_folder: function(){
+
+			let box = document.querySelector(".js-new-folder");
+			box.classList.remove("hide");
+			box.querySelector("input").value = "";
+			box.querySelector("input").focus();
+		},
+
+		send: function(obj)
+		{
+
+			if(action.uploading){
+				alert("Please wait for the upload to complete!");
+				return;
+			}
+
+			action.uploading = true;
+			action.cancelled = false;
+			let myform = new FormData();
+			
+			for (key in obj) {
+				myform.append(key,obj[key]);
+			}
+
+			let xhr = new XMLHttpRequest();
+
+			xhr.addEventListener('error',function(e){
+				alert("An error occured! Please check your connection");
+			});
+
+			xhr.addEventListener('readystatechange',function(){
+
+				if(xhr.readyState == 4)
+				{
+					if(xhr.status == 200)
+					{
+						
+						action.handle_result(xhr.responseText)
+
+					}else{
+						console.log(xhr.responseText);
+						alert("An error occured! Please try again later");
+					}
+
+					action.uploading = false;
+				}
+			});
+
+			xhr.open('post','api.php',true);
+			xhr.send(myform);
+
+		},
+
+		handle_result: function(result)
+		{
+			let obj = JSON.parse(result);
+
+			if(obj.success)
+			{
+				table.refresh(mode.current);
+			}else{
+				alert("Could not complete operation!");
+			}
+
+		},
+	};
+
+		table.refresh();
+
+		window.addEventListener("click",function(){
+
+		submenu.hide();
+		});
+
+</script>
