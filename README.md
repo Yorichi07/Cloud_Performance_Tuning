@@ -7,7 +7,11 @@ In today’s interconnected world, where the ability to share and collaborate on
 Technology Stack
 
 Project Type - Web-Application
+
 Development Environment - Visual Studio Code
+
 Programming Languages - Frontend( HTML, CSS, JS) and Backend(PHP)
+
 Database - MySQL
+
 Version Control - Github
