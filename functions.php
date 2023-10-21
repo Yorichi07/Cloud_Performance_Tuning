@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost','root','','mediahub_db');     //connecting with mysql database from localhost , with root username and no password and mediahub_db as db name
+$con = mysqli_connect('localhost','root','','mydrive_db');     //connecting with mysql database from localhost , with root username and no password and mediahub_db as db name
 
 function is_logged_in()
 {

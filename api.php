@@ -2,23 +2,42 @@
 sleep(0.9);
 
 session_start();
-require __DIR__ . '/functions.php';
+require __DIR__ . '/functions.php';		
 
-$info = [];    //array
+$info = [];    
 $info['success'] = false;
 $info['LOGGED_IN'] = is_logged_in();
 $info['data_type'] = $_POST['data_type'] ?? '';    //POST is used to collect form data after submitting an HTML form with method='post' 
 
-if(!$info['LOGGED_IN'] && ($info['data_type'] != 'user_signup' && $info['data_type'] != 'user_login')){		//if not logged in, don't show any files
+//if not logged in, don't show any files on screen 
+if(!$info['LOGGED_IN'] && ($info['data_type'] != 'user_signup' && $info['data_type'] != 'user_login')){		
     echo json_encode($info);
     die;
 }
 
-$info['username'] = $_SESSION['MY_DRIVE_USER']['username'] ?? 'User';
-$info['drive_occupied'] = get_drive_space($_SESSION['MY_DRIVE_USER']['id']);
-$info['drive_total'] = 5;   //in GBs
-$info['breadcrumbs'] = [];	//sub-folders in MYFiles table
 
+if ($info['LOGGED_IN']) {
+    // Check if 'MY_DRIVE_USER' exists in the session
+    if (isset($_SESSION['MY_DRIVE_USER'])) {
+        $info['username'] = $_SESSION['MY_DRIVE_USER']['username'] ?? 'User';
+        $info['drive_occupied'] = get_drive_space($_SESSION['MY_DRIVE_USER']['id']);
+    } else {
+        // Handle the case where 'MY_DRIVE_USER' is not set in the session
+        // You might want to set a default value for username and drive_occupied here
+        $info['username'] = 'User';
+        $info['drive_occupied'] = 0; // Set an appropriate default value
+    }
+} else {
+    // Handle the case where the user is not logged in
+    // You might want to set default values for 'username' and 'drive_occupied' here as well
+    $info['username'] = 'User';
+    $info['drive_occupied'] = 0; // Set an appropriate default value
+}
+
+$info['drive_total'] = 5;   //in GBs
+$info['breadcrumbs'] = [];	//sub-folders 
+
+//if request method is post and post data is present
 if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
 {
 	if($_POST['data_type'] == "user_login")           //user_login
@@ -73,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
             $errors['username']="Invalid username";
         }
         
-        (eifmpty($password)){ 
+        if (empty($password)){ 
             $errors['password']="A password is required";
         }
         
@@ -144,9 +163,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
 		$info['success'] = true;
 	}
 
-    else if($_POST['data_type'] == "add_to_favourites")		//add to favourite feature
+    else if($_POST['data_type'] == "add_to_favorites")		//add to favorite feature
 	{
-		//check if item is already favourited
+		//check if item is already favorited
 		$id = addslashes($_POST['id'] ?? 0);
  		$user_id = $_SESSION['MY_DRIVE_USER']['id'];
 
@@ -156,8 +175,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
  		if($row)
  		{
  			$row = $row[0];
- 			$favourite = !$row['favourite'];		
-			$query = "update mydrive set favourite = '$favourite' where user_id = '$user_id' && id = '$id' limit 1";
+ 			$favorite = !$row['favorite'];		
+			$query = "update mydrive set favorite = '$favorite' where user_id = '$user_id' && id = '$id' limit 1";
 			query($query);
  		}
 		$info['success'] = true;
@@ -268,8 +287,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
                 $query_folder = "select * from folders where trash=0 && user_id = '$user_id' && parent = '$folder_id' order by id desc limit 30";
                 $query = "select * from mydrive where trash=0 && user_id = '$user_id' && folder_id= '$folder_id' order by id desc limit 30";
                 break;
-            case 'FAVOURITES':
-                $query = "select * from mydrive where trash=0 && favourite = 1 && user_id='$user_id' order by id desc limit 30";
+            case 'favoriteS':
+                $query = "select * from mydrive where trash=0 && favorite = 1 && user_id='$user_id' order by id desc limit 30";
                 break;
             case 'RECENT':
                 $query = "select * from mydrive where trash=0 && user_id='$user_id' order by date_updated desc limit 30";

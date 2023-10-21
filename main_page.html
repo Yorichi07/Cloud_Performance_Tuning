@@ -85,11 +85,11 @@
 					My Drive
 				</div>
 			</div>
-			<div id="FAVOURITES" onclick="mode.set(this.id)" class="class_18" >
+			<div id="favoriteS" onclick="mode.set(this.id)" class="class_18" >
 				<i class="bi bi-star-fill class_17">
 				</i>
 				<div class="class_9"  >
-					Favourites
+					favorites
 				</div>
 			</div>
 			<div id="RECENT" onclick="mode.set(this.id)" class="class_18" >
@@ -300,10 +300,10 @@
 				Share
 			</div>
 		</div>
-		<div onclick="table.add_to_favourites()" class="js-favourites-button class_46" >
+		<div onclick="table.add_to_favorites()" class="js-favorites-button class_46" >
 			<i class="bi bi-star-fill class_17"></i>
-			<div class="js-favourites-text class_9"  >
-				Add to favourites
+			<div class="js-favorites-text class_9"  >
+				Add to favorites
 			</div>
 		</div>
 	</div>
@@ -361,22 +361,22 @@
 			menu.style.left = e.clientX + "px";   /*x position on MYFiles Table*/
 			menu.style.top = e.clientY + window.scrollY +"px";	  /*y position on MYFiles Table*/
 
-			//check if this item is favourited
-			document.querySelector("#submenu .js-favourites-text").innerHTML = "Add to favourites";
+			//check if this item is favorited
+			document.querySelector("#submenu .js-favorites-text").innerHTML = "Add to favorites";
 			document.querySelector("#submenu .js-download-button").classList.add("hide");
-			document.querySelector("#submenu .js-favourites-button").classList.add("hide");
+			document.querySelector("#submenu .js-favorites-button").classList.add("hide");
 			document.querySelector("#submenu .js-restore-button").classList.add("hide");
 			
 			let id = table.selected.getAttribute('id').replace("tr_","");			
-			if(table.ROWS[id].favourite == 1)
+			if(table.ROWS[id].favorite == 1)
 			{
-				document.querySelector("#submenu .js-favourites-text").innerHTML = "Remove from favourites";
+				document.querySelector("#submenu .js-favorites-text").innerHTML = "Remove from favorites";
 			}
 			
 			if(table.ROWS[id].file_type != 'folder')
 			{
 				document.querySelector("#submenu .js-download-button").classList.remove("hide");
-				document.querySelector("#submenu .js-favourites-button").classList.remove("hide");
+				document.querySelector("#submenu .js-favorites-button").classList.remove("hide");
 			}
 
 			if(mode.current == 'TRASH')
@@ -440,7 +440,7 @@
 			window.location.href = "download.php?id=" + table.ROWS[id].id;
 		},
 
-		add_to_favourites: function()
+		add_to_favorites: function()
 		{
 
 			let id = table.selected.getAttribute('id').replace("tr_","");			
@@ -450,7 +450,7 @@
 
 			let obj = {};
 			obj.id 	= table.ROWS[id].id;
-			obj.data_type = 'add_to_favourites';
+			obj.data_type = 'add_to_favorites';
 			
 			action.send(obj);
 		},
@@ -601,7 +601,7 @@
 								{
 
 									star = '<i class="bi bi-star class_34"></i>';
-									if(obj.rows[i].favourite == 1)
+									if(obj.rows[i].favorite == 1)
 										star = '<i class="bi bi-star-fill class_34"></i>';
 								}
 								

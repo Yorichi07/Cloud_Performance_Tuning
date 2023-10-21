@@ -123,6 +123,7 @@
 
 					if(xhr.status ==  200)
 					{
+						console.log(xhr.responseText);
 						let obj = JSON.parse(xhr.responseText);		//request body converted from JSON to JS equivalent format to operate on it 
 						document.querySelector(".js-error-banner").classList.add('hide');
 						
