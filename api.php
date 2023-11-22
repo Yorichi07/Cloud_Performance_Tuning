@@ -1,5 +1,4 @@
 <?php
-sleep(0.9);
 
 session_start();
 require __DIR__ . '/functions.php';		
@@ -129,6 +128,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
             }
 
             move_uploaded_file($file['tmp_name'], $destination);
+
+			$fileContent = file_get_contents($destination);
+			$compressedData = gzcompress($fileContent,9);
+			unlink($destination);
+			file_put_contents($destination, $compressedData);
 
             //save to database
             $file_type = $file['type'];
@@ -287,7 +291,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['data_type']))
                 $query_folder = "select * from folders where trash=0 && user_id = '$user_id' && parent = '$folder_id' order by id desc limit 30";
                 $query = "select * from mydrive where trash=0 && user_id = '$user_id' && folder_id= '$folder_id' order by id desc limit 30";
                 break;
-            case 'favoriteS':
+            case 'favorites':
                 $query = "select * from mydrive where trash=0 && favorite = 1 && user_id='$user_id' order by id desc limit 30";
                 break;
             case 'RECENT':

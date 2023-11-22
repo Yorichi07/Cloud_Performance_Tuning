@@ -85,7 +85,7 @@
 					My Drive
 				</div>
 			</div>
-			<div id="favoriteS" onclick="mode.set(this.id)" class="class_18" >
+			<div id="favorites" onclick="mode.set(this.id)" class="class_18" >
 				<i class="bi bi-star-fill class_17">
 				</i>
 				<div class="class_9"  >
@@ -358,7 +358,7 @@
 			table.select(e, 'rightclick');
 			
 			let menu = document.getElementById("submenu");
-			menu.style.left = e.clientX + "px";   /*x position on MYFiles Table*/
+			menu.style.left = e.clientX + "px";                   /*x position on MYFiles Table*/
 			menu.style.top = e.clientY + window.scrollY +"px";	  /*y position on MYFiles Table*/
 
 			//check if this item is favorited
@@ -555,7 +555,7 @@
 						//check if user is logged in 
 						LOGGED_IN = obj.LOGGED_IN;
 						if(!LOGGED_IN){
-							window.location.href = 'login.html';
+							window.location.href = 'index.html';
 						}
 
 						//update breadcrumbs
@@ -571,14 +571,15 @@
 							crumbs.innerHTML += `<div onclick="table.change_folder_by_id(${obj.breadcrumbs[i].id})" class="${class_name}">${obj.breadcrumbs[i].name}</div>`;
 						}
 
+						//update drive space 
+						let drive_occupied = (obj.drive_occupied / (1024*1024*1024)).toFixed(2);
+						let drive_percent = Math.round((drive_occupied/obj.drive_total) * 100);
+
+						document.querySelector(".js-drive-space-text").innerHTML = `${drive_occupied}GB / ${obj.drive_total}GB`;
+						document.querySelector(".js-drive-space-percent").style.width = `${drive_percent}%`;
+
 						if(obj.success && obj.data_type == "get_files")
 						{ 	
-							//update drive space 
-							let drive_occupied = (obj.drive_occupied / (1024*1024*1024)).toFixed(2);
-							let drive_percent = Math.round((drive_occupied/obj.drive_total) * 100);
-
-							document.querySelector(".js-drive-space-text").innerHTML = `${drive_occupied}GB / ${obj.drive_total}GB`;
-							document.querySelector(".js-drive-space-percent").style.width = `${drive_percent}%`;
 
 							table.ROWS = obj.rows;
 
@@ -647,7 +648,7 @@
 				if(xhr.readyState == 4){
 					if(xhr.status ==  200)
 					{
-						window.location.href = 'login.html';
+						window.location.href = 'index.html';
 
 					}else{
 						//error handling
